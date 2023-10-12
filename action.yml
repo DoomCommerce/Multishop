@@ -1,0 +1,27 @@
+
+name : Multishop
+
+description : |
+    Makes working with multiple Shopify stores easier.
+
+runs:
+    using : node20
+    main : Action/mod.js
+
+inputs:
+
+    Secret:
+        description : SSH Secret
+        required : true
+
+    Stable:
+        description : Name of the stable branch
+        required : true
+
+    Stores:
+        description : List of store branch names
+        required : true
+
+    Commit:
+        description : Data used in commit messages
+        required : true
