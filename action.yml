@@ -14,14 +14,6 @@ inputs:
         description : SSH Secret
         required : true
 
-    Stable:
-        description : Name of the stable branch
-        required : true
-
-    Stores:
-        description : List of store branch names
-        required : true
-
-    Commit:
-        description : Data used in commit messages
+    Config:
+        description : Configuration
         required : true
