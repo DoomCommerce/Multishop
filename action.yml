@@ -6,7 +6,7 @@ description : |
 
 runs:
     using : node20
-    main : Action/mod.js
+    main : Action/Source/mod.js
 
 inputs:
 
