@@ -34,7 +34,9 @@ try {
     console.table([tyrone, janet, maria])
 
 
-    console.log("Hello via Bun!");
+    const secret = getInput('Secret')
+
+    console.log('Secret',secret)
 
     const yaml = getInput('Config')
 
