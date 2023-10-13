@@ -55,7 +55,8 @@ if len(command) > 0 :
 print('Command')
 print(command)
 
-subprocess.call(command)
+code = subprocess.call(command,stdout=subprocess.PIPE)
 
 
 print('After subprocess')
+print(code)
