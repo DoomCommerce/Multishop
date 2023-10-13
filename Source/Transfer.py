@@ -41,12 +41,12 @@ command = [
     'checkout' ,
     stable ,
     '--' ,
-    'config/settings_schema.json' ,
-    'layout/password.liquid' ,
     'templates' ,
     'snippets' ,
     'sections' ,
     'assets' ,
+    'layout/password.liquid' ,
+    'config/settings_schema.json'
 ]
 
 if len(command) > 0 :
@@ -55,8 +55,9 @@ if len(command) > 0 :
 print('Command')
 print(command)
 
-code = subprocess.call(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
+out = process.communicate()[0]
+print(out)
 
 print('After subprocess')
-print(code)
