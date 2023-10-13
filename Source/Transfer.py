@@ -20,6 +20,7 @@ lines = exclude     \
 
 
 print('After lines')
+print(lines)
 
 
 filters = []
@@ -29,6 +30,7 @@ for line in lines :
 
 
 print('After filters')
+print(filters)
 
 
 command = [
@@ -44,8 +46,10 @@ command = [
     'assets' ,
 ]
 
-command = command   \
-    .extend(filters)
+if command.count > 0 :
+
+    command = command   \
+        .extend(filters)
 
 subprocess.call(command)
 
