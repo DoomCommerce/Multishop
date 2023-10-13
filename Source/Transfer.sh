@@ -14,15 +14,20 @@ echo "${paths}"
 echo "${paths}" | xargs git checkout "${stable}" -- {}
 
 
+echo "Checked out stable files"
+
 git status
 
+echo "Removing deleted files"
 
-echo "${paths}" | xargs rm -rf $(    \
-    git diff-tree               \
-        --name-only             \
-        -r                      \
-        --diff-filter=D         \
-        "${staging}"            \
-        "${stable}              \
-        -- {}                   \
-)
+echo "${paths}" | xargs     \
+    git diff-tree           \
+        --name-only         \
+        -r                  \
+        --diff-filter=D     \
+        "${staging}"        \
+        "${stable}"         \
+        -- {}               \
+| rm -rf {}
+
+echo "Removed deleted files"
