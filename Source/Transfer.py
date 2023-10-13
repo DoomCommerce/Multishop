@@ -53,6 +53,9 @@ if len(command) > 0 :
 
     command = command   \
         .extend(filters)
+    
+print('Command')
+print(command)
 
 subprocess.call(command)
 
