@@ -4,16 +4,66 @@ name : Multishop
 description : |
     Makes working with multiple Shopify stores easier.
 
-runs:
-    using : node20
-    main : dist/index.js
-
 inputs:
 
     Secret:
         description : SSH Secret
         required : true
 
-    Config:
-        description : Configuration
+    Staging:
+        description : Description
         required : true
+
+    Stable:
+        description : Description
+        required : true
+
+    Commit:
+        description : Description
+        required : true
+
+    Email:
+        description : Description
+        required : true
+
+    User:
+        description : Description
+        required : true
+
+    Exclude:
+        description : Description
+        required : true
+
+runs:
+
+    using : composite
+
+    steps:
+
+        -   name : Checkout Staging Repository
+            uses : actions/checkout@v3
+            with :
+
+                repository : ${{ github.action_repository }}
+                ssh-key : ${{ inputs.Secret }}
+                ref : ${{ inputs.Staging }}
+
+        -   name : Set Git Account
+            shell : bash
+            run : Source/User.sh "${{ inputs.Email }}" "${{ inputs.User }}"
+
+        -   name : Fetch Origin
+            shell : bash
+            run : git fetch origin ${{ inputs.Stable }}:${{ inputs.Stable }} --update-head-ok
+
+        -   name : Transfer Relevant Changes
+            shell : bash
+            run : python3 Source/Transfer.py "${{ inputs.Stable }}" "${{ inputs.Exclude }}"
+
+        -   name : Remove Untracked Files
+            shell : bash
+            run : git clean -df
+
+        -   name : Commit Changes
+            shell : bash
+            run : Source/Commit.sh "${{ inputs.Commit }}"
