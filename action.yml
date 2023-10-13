@@ -51,17 +51,24 @@ runs:
         -   name : Set Git Account
             shell : bash
             run : |
-                "${{ github.action_path }}/Source/User.sh" \
-                "${{ inputs.Email }}" \
+                "${{ github.action_path }}/Source/User.sh"  \
+                "${{ inputs.Email }}"                       \
                 "${{ inputs.User }}"
 
         -   name : Fetch Origin
             shell : bash
-            run : git fetch origin ${{ inputs.Stable }}:${{ inputs.Stable }} --update-head-ok
+            run : |
+                git fetch origin                            \
+                ${{ inputs.Stable }}:${{ inputs.Stable }}   \
+                --update-head-ok
 
         -   name : Transfer Relevant Changes
             shell : bash
-            run : python3 ./Source/Transfer.py "${{ inputs.Stable }}" "${{ inputs.Exclude }}"
+            run : |
+                python3                                         \
+                "${{ github.action_path }}/Source/Transfer.py"  \
+                "${{ inputs.Stable }}"                          \
+                "${{ inputs.Exclude }}"
 
         -   name : Remove Untracked Files
             shell : bash
@@ -69,4 +76,6 @@ runs:
 
         -   name : Commit Changes
             shell : bash
-            run : ./Source/Commit.sh "${{ inputs.Commit }}"
+            run : |
+                "${{ github.action_path }}/Source/Commit.sh" \
+                "${{ inputs.Commit }}"
