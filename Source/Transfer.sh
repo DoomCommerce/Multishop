@@ -11,7 +11,7 @@ echo 'Paths:'
 echo "${paths}"
 
 
-echo "${paths}" | xargs git checkout "${stable}" -- {}
+echo "${paths}" | xargs git checkout "${stable}" --
 
 
 echo "Checked out stable files"
@@ -27,7 +27,7 @@ echo "${paths}" | xargs     \
         --diff-filter=D     \
         "${staging}"        \
         "${stable}"         \
-        -- {}               \
+        --                  \
 | rm -rf {}
 
 echo "Removed deleted files"
