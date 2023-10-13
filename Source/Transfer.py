@@ -48,7 +48,7 @@ command = [
     'assets' ,
 ]
 
-if command.count > 0 :
+if command.count() > 0 :
 
     command = command   \
         .extend(filters)
