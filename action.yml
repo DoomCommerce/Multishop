@@ -48,13 +48,9 @@ runs:
                 ssh-key : ${{ inputs.Secret }}
                 ref : ${{ inputs.Staging }}
 
-        -   name : Where
-            shell : bash
-            run : echo "$cwd"
-
         -   name : Set Git Account
             shell : bash
-            run : Source/User.sh "${{ inputs.Email }}" "${{ inputs.User }}"
+            run : ./Source/User.sh "${{ inputs.Email }}" "${{ inputs.User }}"
 
         -   name : Fetch Origin
             shell : bash
@@ -62,7 +58,7 @@ runs:
 
         -   name : Transfer Relevant Changes
             shell : bash
-            run : python3 Source/Transfer.py "${{ inputs.Stable }}" "${{ inputs.Exclude }}"
+            run : python3 ./Source/Transfer.py "${{ inputs.Stable }}" "${{ inputs.Exclude }}"
 
         -   name : Remove Untracked Files
             shell : bash
@@ -70,4 +66,4 @@ runs:
 
         -   name : Commit Changes
             shell : bash
-            run : Source/Commit.sh "${{ inputs.Commit }}"
+            run : ./Source/Commit.sh "${{ inputs.Commit }}"
