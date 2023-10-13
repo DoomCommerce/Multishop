@@ -57,7 +57,7 @@ print(command)
 
 process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
-out = process.communicate()[0]
+out = process.communicate()
 print(out)
 
 print('After subprocess')
