@@ -30,7 +30,7 @@ inputs:
         description : Description
         required : true
 
-    Exclude:
+    Paths:
         description : Description
         required : true
 
@@ -70,15 +70,14 @@ runs:
         -   name : Transfer Relevant Changes
             shell : bash
             run : |
-                python                                          \
-                "${{ github.action_path }}/Source/Transfer.py"  \
+                "${{ github.action_path }}/Source/Transfer.sh"  \
+                "${{ inputs.Staging }}"                         \
                 "${{ inputs.Stable }}"                          \
-                "${{ inputs.Exclude }}"
+                "${{ inputs.Paths }}"
 
         -   name : Status
             shell : bash
             run : git status
-
 
         -   name : Commit Changes
             shell : bash

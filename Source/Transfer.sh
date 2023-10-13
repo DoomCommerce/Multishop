@@ -1,18 +1,21 @@
 
+staging="$1"
+stable="$2"
+paths="$3"
 
-IFS='\n' read -r -a array <<< "$2"
 
-git checkout $1 --                  \
-    templates                       \
-    snippets                        \
-    sections                        \
-    assets                          \
-    layout/password.liquid          \
-    config/settings_schema.json     \
-    ':!templates/**/*.json'         \
-    ':!templates/*.json'            \
-    ':!*/pickystory-*'              \
-    ':!*/pagefly.*'                 \
-    ':!*/pagefly-*'                 \
-    ':!*/*.pf-*'                    \
-    ':!*/pf-*'
+"${paths}" | xargs git checkout stable -- {}
+
+
+git status
+
+
+"${paths}" | xargs rm -rf $(    \
+    git diff-tree               \
+        --name-only             \
+        -r                      \
+        --diff-filter=D         \
+        "${staging}"            \
+        "${stable}              \
+        -- {}                   \
+)
