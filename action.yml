@@ -48,6 +48,10 @@ runs:
                 ssh-key : ${{ inputs.Secret }}
                 ref : ${{ inputs.Staging }}
 
+        -   name : Where
+            shell : bash
+            run : echo "$cwd"
+
         -   name : Set Git Account
             shell : bash
             run : Source/User.sh "${{ inputs.Email }}" "${{ inputs.User }}"
