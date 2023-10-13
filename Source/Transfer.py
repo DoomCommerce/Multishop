@@ -29,7 +29,7 @@ print(lines)
 filters = []
 
 for line in lines :
-    filters.append( "':!" + line + "'" )
+    filters.append( ':!' + line )
 
 
 print('After filters')
