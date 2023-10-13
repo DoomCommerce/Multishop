@@ -44,7 +44,7 @@ runs:
             uses : actions/checkout@v3
             with :
 
-                repository : ${{ github.action_repository }}
+                repository : ${{ github.repository }}
                 ssh-key : ${{ inputs.Secret }}
                 ref : ${{ inputs.Staging }}
 
