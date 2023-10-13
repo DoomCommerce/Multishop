@@ -50,7 +50,10 @@ runs:
 
         -   name : Set Git Account
             shell : bash
-            run : "${{ github.action_path }}/Source/User.sh" "${{ inputs.Email }}" "${{ inputs.User }}"
+            run : |
+                "${{ github.action_path }}/Source/User.sh"
+                "${{ inputs.Email }}"
+                "${{ inputs.User }}"
 
         -   name : Fetch Origin
             shell : bash
