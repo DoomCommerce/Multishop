@@ -31,7 +31,7 @@ for line in lines :
 print('After filters')
 
 
-subprocess.run([
+command = [
     'git' ,
     'checkout' ,
     stable ,
@@ -42,8 +42,12 @@ subprocess.run([
     'snippets' ,
     'sections' ,
     'assets' ,
-    *filters
-])
+]
+
+command = command   \
+    .extend(filters)
+
+subprocess.call(command)
 
 
 print('After subprocess')
