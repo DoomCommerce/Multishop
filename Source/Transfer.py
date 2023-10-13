@@ -10,7 +10,8 @@ print('Starting filter')
 exclude = sys.argv[1]
 stable = sys.argv[0]
 
-print((stable,exclude))
+print(stable)
+print(exclude)
 
 
 print('After arguments')
@@ -48,7 +49,7 @@ command = [
     'assets' ,
 ]
 
-if command.count() > 0 :
+if len(command) > 0 :
 
     command = command   \
         .extend(filters)
