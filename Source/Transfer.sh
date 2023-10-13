@@ -11,13 +11,13 @@ echo 'Paths:'
 echo "${paths}"
 
 
-"${paths}" | xargs git checkout "${stable}" -- {}
+echo "${paths}" | xargs git checkout "${stable}" -- {}
 
 
 git status
 
 
-"${paths}" | xargs rm -rf $(    \
+echo "${paths}" | xargs rm -rf $(    \
     git diff-tree               \
         --name-only             \
         -r                      \
