@@ -28,6 +28,6 @@ echo "${paths}" | xargs     \
         "${staging}"        \
         "${stable}"         \
         --                  \
-| rm -rf {}
+| rm -rf
 
 echo "Removed deleted files"
