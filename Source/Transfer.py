@@ -10,6 +10,8 @@ print('Starting filter')
 exclude = sys.argv[1]
 stable = sys.argv[0]
 
+print((stable,exclude))
+
 
 print('After arguments')
 
