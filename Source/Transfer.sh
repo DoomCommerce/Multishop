@@ -11,6 +11,10 @@ echo 'Paths:'
 echo "${paths}"
 
 
+# paths=$( "${paths}" | xargs )
+
+# echo "Paths: ${paths}"
+
 echo "${paths}" | xargs git checkout "${stable}" --
 
 
@@ -28,6 +32,6 @@ echo "${paths}" | xargs     \
         "${staging}"        \
         "${stable}"         \
         --                  \
-| rm -rf
+| xargs rm -rf
 
 echo "Removed deleted files"
