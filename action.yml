@@ -79,13 +79,6 @@ runs:
             shell : bash
             run : git status
 
-        -   name : Remove Untracked Files
-            shell : bash
-            run : git clean -df
-
-        -   name : Status
-            shell : bash
-            run : git status
 
         -   name : Commit Changes
             shell : bash

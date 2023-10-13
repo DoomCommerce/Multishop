@@ -39,6 +39,7 @@ print(filters)
 command = [
     'git' ,
     'checkout' ,
+    '--force' ,
     stable ,
     '--' ,
     'templates' ,
