@@ -62,11 +62,6 @@ runs:
                 ${{ inputs.Stable }}:${{ inputs.Stable }}   \
                 --update-head-ok
 
-        -   name : Set up Python 3.12
-            uses : actions/setup-python@v4
-            with :
-                python-version: '3.12'
-
         -   name : Transfer Relevant Changes
             shell : bash
             run : |
