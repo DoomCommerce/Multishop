@@ -4,8 +4,14 @@ import subprocess
 import sys
 
 
+print('Starting filter')
+
+
 exclude = sys.argv[1]
 stable = sys.argv[0]
+
+
+print('After arguments')
 
 
 lines = exclude     \
@@ -13,10 +19,16 @@ lines = exclude     \
     .splitlines()
 
 
+print('After lines')
+
+
 filters = []
 
 for line in lines :
     filters.append( "':!" + line + "'" )
+
+
+print('After filters')
 
 
 subprocess.run([
@@ -32,3 +44,6 @@ subprocess.run([
     'assets' ,
     *filters
 ])
+
+
+print('After subprocess')
